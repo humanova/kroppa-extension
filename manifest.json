@@ -1,0 +1,31 @@
+{
+
+    "manifest_version": 2,
+    "name": "Kroppa",
+    "version": "1.0",
+  
+    "description": "Saliency-based image cropping service browser extenion.",
+    "homepage_url": "https://github.com/humanova/kroppa-extension",
+    "icons": {
+      "48": "icons/kroppa-48.png"
+    },
+  
+    "permissions": [
+      "activeTab",
+      "http://*/"
+    ],
+  
+    "browser_action": {
+      "default_icon": "icons/kroppa-32.png",
+      "default_title": "Kroppa",
+      "default_popup": "popup/kroppa.html"
+    },
+
+    "content_scripts": [
+    {
+        "matches": ["*://*.bruh.uno/*"],
+        "js": ["content_scripts/kroppa.js"]
+    }]
+
+}
+  

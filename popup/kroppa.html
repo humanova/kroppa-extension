@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="kroppa.css"/>
+  </head>
+
+<body>
+  <div id="popup-content">
+    <input type="url" name="url" id="url"
+       placeholder="https://example.com/image.png"
+       pattern="https://.*" size="30"
+       required>
+    <button type="button" id="send-request-button">Crop</button> 
+    <br>
+    <img src="" id="img" alt="preview img" width="350"> 
+  </div>
+  <script src="../content_scripts/kroppa.js"></script>
+</body>
+
+</html>
