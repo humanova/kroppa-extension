@@ -7,7 +7,7 @@
     "description": "Saliency-based image cropping service browser extenion.",
     "homepage_url": "https://github.com/humanova/kroppa-extension",
     "icons": {
-      "48": "icons/kroppa-48.png"
+      "48": "icons/kroppa-48.ico"
     },
   
     "permissions": [
@@ -16,7 +16,7 @@
     ],
   
     "browser_action": {
-      "default_icon": "icons/kroppa-32.png",
+      "default_icon": "icons/kroppa-32.ico",
       "default_title": "Kroppa",
       "default_popup": "popup/kroppa.html"
     },
