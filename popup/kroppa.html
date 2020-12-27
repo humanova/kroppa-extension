@@ -3,18 +3,30 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="author" content="humanova">
     <link rel="stylesheet" href="kroppa.css"/>
   </head>
 
 <body>
   <div id="popup-content">
+    <h1>Kroppa: magically crop images</h1>
     <input type="url" name="url" id="url"
        placeholder="https://example.com/image.png"
-       pattern="https://.*" size="30"
+       pattern="https://.*" size="50"
        required>
-    <button type="button" id="send-request-button">Crop</button> 
+    <form>
+      <input type="checkbox" id="preprocessing" name="Pre-processing">
+      <label for="preprocessing">Pre-processing</label>
+      <input type="checkbox" id="postprocessing" name="Post-processing" checked>
+      <label for="preprocessing">Post-processing</label>
+      <input type="checkbox" id="model" name="Use smaller network (u2netp)" checked>
+      <label for="model">Use smaller network (u2netp)</label>
+      <br>
+      <button type="button" id="send-request-button">Crop</button> 
+    </form>
     <br>
-    <img src="" id="img" alt="preview img" width="350"> 
+    <img src="" id="img" alt="" width="300"> 
+    <button type="button" id="save-button"><a id="save-a" href="" download>Save</a></button> 
   </div>
   <script src="../content_scripts/kroppa.js"></script>
 </body>

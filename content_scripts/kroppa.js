@@ -1,31 +1,35 @@
 (function () {
-  /**
-   * Check and set a global guard variable.
-   * If this content script is injected into the same page again,
-   * it will do nothing next time.
-   */
   if (window.hasRun) {
     return;
   }
+
   window.hasRun = true;
   var current_img_blob = "";
   send_request_button = document.getElementById("send-request-button");
+  save_button = document.getElementById("save-button");
+  preprocessing = document.getElementById("preprocessing");
+  postprocessing = document.getElementById("postprocessing");
+  model = document.getElementById("model");
+  
+  function update_save_button() {
+    if (current_img_blob == "") {
+      save_button.style.display = "none";
+    } else {
+      save_button.style.display = "block";
+    }
+  } update_save_button();
 
-  function set_new_image(blob_url)
-  {
+  function set_new_image(blob_url) {
     img = document.getElementById("img");
+    save_a = document.getElementById("save-a");
     current_img_blob = blob_url;
     img.src = blob_url;
-    img.onload = function() {
-      var w = img.width;
-      var h = img.height;
-      
-    }
-    
+    save_a.href = blob_url;
+    save_a.download = 'cropped_image_' + (new Date()).getTime() + '.png';
+    update_save_button();
   }
 
-  function send_request(data) 
-  {
+  function send_request(data) {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "http://bruh.uno:5010/cropping-api/crop", true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -50,9 +54,9 @@
     var config_dict = {
       settings : { 
         is_url : true,
-        preprocessing : false,
-        postprocessing : true,
-        model : "u2netp"
+        preprocessing : preprocessing.checked,
+        postprocessing : postprocessing.checked,
+        model : model.checked ? "u2netp" : "u2net"
       },
       img : img_url
     }
